@@ -1,18 +1,7 @@
 #!/bin/bash
 
-# 定义.deb包的下载URL
-DEB_PACKAGE_URL="https://github.com/A311-from-NEU/mydaily-release/raw/main/mydaily.deb"
-DEB_PACKAGE_NAME="mydaily.deb"
-
-# 下载 .deb 包
-echo "正在下载 mydaily..."
-wget "$DEB_PACKAGE_URL" -O "$DEB_PACKAGE_NAME"
-
-# 检查下载是否成功
-if [ ! -f "$DEB_PACKAGE_NAME" ]; then
-    echo "下载失败，请检查 URL 或网络连接。"
-    exit 1
-fi
+# 定义.deb包的路径
+DEB_PACKAGE="mydaily.deb"
 
 # 更新软件包列表
 echo "正在更新软件包列表..."
@@ -32,7 +21,7 @@ fi
 
 # 安装 .deb 包
 echo "正在安装 mydaily..."
-sudo dpkg -i "$DEB_PACKAGE_NAME"
+sudo dpkg -i "$DEB_PACKAGE"
 
 # 检查软件包是否成功安装
 if [[ $? -ne 0 ]]; then
